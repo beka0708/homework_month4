@@ -1,0 +1,13 @@
+from django.shortcuts import render
+from django.http import HttpResponse
+from . import models
+
+
+def hello_world_view(request):
+    return HttpResponse("<h1>Hello, this is my Django Project!!!</h1>")
+
+
+#post view
+def post_view(request):
+    post = models.Post.objects.all()
+    return render(request, 'index.html', {'post': post})
