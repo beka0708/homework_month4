@@ -8,7 +8,7 @@
 </head>
 <body>
 {% include 'header.html' %}
-<button><a href="/car_list/">На список машин</a></button>
+<button class="custom-btn btn-7"><span><a href="/car_list/">На список машин</a></span></button>
 
 <center>
 <div class="container">
@@ -24,10 +24,24 @@
         <div class="post-image">
             <img src="{{car_detail.image.url}}">
         </div>
+        <button class="custom-btn btn-7"><span><a href="/car_list/{{car_detail.id}}/update">Изменить</a></span></button>
+        <button class="custom-btn btn-7"><span><a href="/car_list/{{car_detail.id}}/delete">Удалить</a></span></button>
         <div class="post-content">
             <p>{{car_detail.description}}</p>
         </div>
     </div>
+    <br>
+        <table border="4px">
+        <tr>
+            <td>Текст</td> &nbsp; <td>Рейтинг</td>&nbsp; <td>Дата создания</td>
+        </tr>
+
+        {% for j in car_detail.comment_object.all %}
+        <tr>
+            <td>{{j.text}}</td><td>{{j.rate_stars}}</td><td>{{j.created_data}}</td>
+        </tr>
+        {% endfor %}
+    </table>
     <br>
     <iframe src="{{car_detail.video}}" frameborder="0" width="800" height="400"></iframe>
 </div>
