@@ -109,3 +109,18 @@ class CarCommentView(CreateView):
     def form_valid(self, form):
         print(form.clean)
         return super(CarCommentView, self).form_valid(form=form)
+
+
+#кнопка поиска
+class Search(ListView):
+    template_name = 'car_list.html'
+    context_object_name = 'car'
+    paginate_by = 5
+
+    def get_queryset(self):
+        return models.Cars.objects.filter(title__icontains=self.request.GET.get('q'))
+
+    def get_context_data(self, *, object_list=None, **kwargs):
+        contex = super().get_context_data(**kwargs)
+        contex['q'] = self.request.GET.get('q')
+        return contex

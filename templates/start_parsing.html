@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Start Parsing</title>
+</head>
+<body>
+<form method="POST" enctype="multipart/form-data">
+  {% csrf_token %}
+  {{form.as_p}}
+  <button type="submit">Взять данные</button>
+</form>
+<button type="submit"><a href="/laptop_list/">На список товаров</a></button>
+</body>
+</html>

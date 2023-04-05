@@ -8,4 +8,5 @@ urlpatterns = [
     path('car_list/<int:id>/delete', views.CarDeleteView.as_view(), name='delete'),
     path('car_list/<int:id>/comment', views.CarCommentView.as_view(), name='comment'),
     path('create_car/', views.CreateCarView.as_view(), name='create'),
+    path('search/', views.Search.as_view(), name='search'),
 ]
