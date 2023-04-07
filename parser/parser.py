@@ -19,16 +19,15 @@ def get_html(url, params=''):
 @csrf_exempt
 def get_data(html):
     soup = bs(html, "html.parser")
-    items = soup.find_all('div', class_='product__item-inner')
+    items = soup.find_all('div', class_='product__item-inner ')
     sulpak_laptop = []
 
     for item in items:
         sulpak_laptop.append(
             {
-                'title_name': item.find('div', class_='product__item-name-block').get_text(),
+                'title_name': item.find('div', class_='product__item-name').get_text(),
                 'title_url': URL + item.find('a').get('href'),
-                'image': URL + item.find('div', class_='swiper-slide swiper-slide-visible swiper-slide-active').find(
-                    'img').get('src'),
+                'image': URL + item.find('div', class_='product__item-images-block').find('img').get('src'),
             }
         )
 
